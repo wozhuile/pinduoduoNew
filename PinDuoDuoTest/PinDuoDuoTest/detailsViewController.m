@@ -13,6 +13,15 @@
 #import "HomeGroup.h"
 #import "HomeSku.h"
 
+#pragma mark 导入第三方，一直报错原因，一般要尖括号
+
+//#import "SDCycleScrollView.h"
+#import <SDCycleScrollView.h>
+
+
+
+
+#import "ScrollAndTopTableViewCell.h"
 @interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate>
 
 @end
@@ -142,7 +151,7 @@
     
     
     
-    
+    [_detailTableView reloadData];
     
     
     
@@ -203,6 +212,23 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    if (indexPath.section==0) {
+        
+      static  NSString*cellID=@"scrollCell";
+        
+        ScrollAndTopTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (cell==nil) {
+            cell=[[ScrollAndTopTableViewCell alloc]init];
+        }
+        
+        
+        return cell;
+    }
+    
+    
     //暂时
     static NSString*cellID=@"cell";
     
@@ -254,19 +280,6 @@
     }
     
 }
-
-
-
-
-
-//
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    //self.tabBarController.hidesBottomBarWhenPushed=YES;
-//    //self.tabBarController.tabBar.hidden=YES;
-//    
-//    }
 
 
 

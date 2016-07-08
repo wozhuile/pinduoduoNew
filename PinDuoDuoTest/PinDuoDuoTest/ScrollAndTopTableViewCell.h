@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ScrollAndTopTableViewCell : UITableViewCell
+
+
+-(void)scrollImageView:(NSArray*)imageArray;
+
 
 @end
