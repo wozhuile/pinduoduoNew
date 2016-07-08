@@ -41,4 +41,9 @@ typedef void(^sendIndexPath) (NSInteger indexPath);
 @property(nonatomic,strong)NSMutableArray*showArray;
 
 
+
+
+#pragma mark 展示图片哪里重用了。。问让创建 加加1，，tag就不一样，应该可以解决下
+@property(nonatomic,assign)NSInteger showCount;
+
 @end

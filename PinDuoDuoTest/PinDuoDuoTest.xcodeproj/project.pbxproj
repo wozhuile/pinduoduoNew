@@ -14,6 +14,8 @@
 		0440422F1D275F200015D3E6 /* promotion_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440422E1D275F200015D3E6 /* promotion_listTableViewCell.m */; };
 		044042321D275F360015D3E6 /* country_listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044042311D275F360015D3E6 /* country_listTableViewCell.m */; };
 		044042351D275F590015D3E6 /* goods_listRankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044042341D275F590015D3E6 /* goods_listRankTableViewCell.m */; };
+		04598DE41D2FE43F00AABA72 /* ShowScrollTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04598DE21D2FE43F00AABA72 /* ShowScrollTableViewCell.m */; };
+		04598DE51D2FE43F00AABA72 /* ShowScrollTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04598DE31D2FE43F00AABA72 /* ShowScrollTableViewCell.xib */; };
 		04D70A8A1D2D2E04000148D3 /* HomeDetailsModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D70A831D2D2E04000148D3 /* HomeDetailsModle.m */; };
 		04D70A8B1D2D2E04000148D3 /* HomeGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D70A851D2D2E04000148D3 /* HomeGallery.m */; };
 		04D70A8C1D2D2E04000148D3 /* HomeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D70A871D2D2E04000148D3 /* HomeGroup.m */; };
@@ -95,6 +97,9 @@
 		044042311D275F360015D3E6 /* country_listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = country_listTableViewCell.m; sourceTree = "<group>"; };
 		044042331D275F590015D3E6 /* goods_listRankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goods_listRankTableViewCell.h; sourceTree = "<group>"; };
 		044042341D275F590015D3E6 /* goods_listRankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goods_listRankTableViewCell.m; sourceTree = "<group>"; };
+		04598DE11D2FE43F00AABA72 /* ShowScrollTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowScrollTableViewCell.h; sourceTree = "<group>"; };
+		04598DE21D2FE43F00AABA72 /* ShowScrollTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowScrollTableViewCell.m; sourceTree = "<group>"; };
+		04598DE31D2FE43F00AABA72 /* ShowScrollTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowScrollTableViewCell.xib; sourceTree = "<group>"; };
 		04D70A811D2D2E04000148D3 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		04D70A821D2D2E04000148D3 /* HomeDetailsModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailsModle.h; sourceTree = "<group>"; };
 		04D70A831D2D2E04000148D3 /* HomeDetailsModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsModle.m; sourceTree = "<group>"; };
@@ -237,6 +242,7 @@
 		043125FF1D2EA32C00C2FCC7 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04598DE01D2FE41300AABA72 /* 第四区 */,
 				043126061D2EA3B400C2FCC7 /* 展示图片 */,
 				043126001D2EA33600C2FCC7 /* 第一区滚动图片加其他 */,
 			);
@@ -274,6 +280,16 @@
 				044042341D275F590015D3E6 /* goods_listRankTableViewCell.m */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		04598DE01D2FE41300AABA72 /* 第四区 */ = {
+			isa = PBXGroup;
+			children = (
+				04598DE11D2FE43F00AABA72 /* ShowScrollTableViewCell.h */,
+				04598DE21D2FE43F00AABA72 /* ShowScrollTableViewCell.m */,
+				04598DE31D2FE43F00AABA72 /* ShowScrollTableViewCell.xib */,
+			);
+			name = "第四区";
 			sourceTree = "<group>";
 		};
 		04D70A7E1D2D2DDB000148D3 /* 点击单元格 */ = {
@@ -817,6 +833,7 @@
 				04E221BC1D2221BD0042B3C7 /* PDDSearchViewController.xib in Resources */,
 				04ED69601D2389E400098325 /* goods_listTableViewCell.xib in Resources */,
 				04ED69651D2389FB00098325 /* home_super_brandTableViewCell.xib in Resources */,
+				04598DE51D2FE43F00AABA72 /* ShowScrollTableViewCell.xib in Resources */,
 				04E221B61D2221A60042B3C7 /* PDDRankViewController.xib in Resources */,
 				04E1B5F41D24FE7A0013515A /* HotCollectionViewCell.xib in Resources */,
 				04E221C21D2221D50042B3C7 /* PDDMeViewController.xib in Resources */,
@@ -888,6 +905,7 @@
 				04D70A911D2D32CB000148D3 /* detailsViewController.m in Sources */,
 				04DE6ED91D274BC100FF3AC1 /* rankTool.m in Sources */,
 				04ED69691D238A1200098325 /* home_recommend_subjectsTableViewCell.m in Sources */,
+				04598DE41D2FE43F00AABA72 /* ShowScrollTableViewCell.m in Sources */,
 				04E2596F1D2A15E3006F488B /* MiddlescrollTableViewCell.m in Sources */,
 				04DE6EE71D274C8E00FF3AC1 /* RankCountryList.m in Sources */,
 				04E3775F1D28BACD00467A06 /* HotTool.m in Sources */,

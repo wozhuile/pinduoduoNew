@@ -27,7 +27,11 @@
 
 
 #import "ScrollAndTopTableViewCell.h"
-@interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate>
+#import "ShowScrollTableViewCell.h"
+
+
+
+@interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate,SDCycleScrollViewDelegate>
 
 @end
 
@@ -140,14 +144,14 @@
         //根据索引idx和数组类型来做
         if (obj.type==1) {
             [_scrollArray addObject:obj.url];
-             NSLog(@"_scrollArray====%@",_scrollArray);
+             //NSLog(@"_scrollArray====%@",_scrollArray);
             
             
         }
         if (obj.type==2) {
 #pragma mark 输出，断点试试看数组都对没有
             [_showArray addObject:obj.url];
-            NSLog(@"_showArray====%@",_showArray);
+            //NSLog(@"_showArray====%@",_showArray);
         }
         
     }];
@@ -232,21 +236,85 @@
         
         
 #pragma mark 不知道为什么这个系统提供的方法用不了  分开调用着先吧
-        SDCycleScrollView*scroll=[[SDCycleScrollView alloc]initWithFrame:CGRectMake(0, 0, 414,339 )];//CGRectGetWidth(cell.contentView.frame)用这个就是320
+        SDCycleScrollView*scroll=[[SDCycleScrollView alloc]initWithFrame:CGRectMake(0, 0,  CGRectGetWidth(self.view.frame),339 )];//CGRectGetWidth(cell.contentView.frame)用这个就是320
 
         
         scroll.imageURLStringsGroup=_scrollArray;
         scroll.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
-       scroll.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+       scroll.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+        scroll.autoScrollTimeInterval=4.0;
+        
+        scroll.pageControlDotSize=CGSizeMake(10, 10);
+        scroll.dotColor=[UIColor whiteColor];
+        
+        
+        scroll.delegate=self;
 #pragma mark 占位图片
         [scroll setPlaceholderImage:[UIImage imageNamed:@"default_mall_logo"]];
         
         [cell.contentView addSubview:scroll];
         
+        //缓存
+        [scroll clearCache];
         
         cell.backgroundColor=[UIColor greenColor];
         return cell;
     }
+    
+    
+    if (indexPath.section==4) {
+        
+        static NSString*cellID=@"showCell";
+        ShowScrollTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (cell==nil) {
+            cell=[[ShowScrollTableViewCell alloc]init];
+            
+            //_showCount++;//可以输出看看实现加加没有
+            //NSLog(@"_showCount===%ld",(long)_showCount);
+            
+//            UIImageView*oldImage=[cell.contentView viewWithTag:100];
+//             [oldImage removeFromSuperview];
+//            UIImageView*img=[[UIImageView alloc]initWithFrame:CGRectMake(15, 5, CGRectGetWidth(self.view.frame)-30,  350)];
+//            
+//            img.tag=100;
+//            
+//           // NSLog(@"img.tag===%ld",(long)img.tag);
+//            [cell.contentView addSubview:img];
+            
+            
+        }
+
+        UIImageView*oldImage=[cell.contentView viewWithTag:100];
+        [oldImage removeFromSuperview];
+        UIImageView*img=[[UIImageView alloc]initWithFrame:CGRectMake(15, 5, CGRectGetWidth(self.view.frame)-30,  350)];
+        
+        img.tag=100;
+        
+        // NSLog(@"img.tag===%ld",(long)img.tag);
+        [cell.contentView addSubview:img];
+        
+        [_showArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            //UIImageView*img
+         
+           // NSLog(@"img=====%@",img);
+            
+            //可以输出obj
+            //NSLog(@"------%@",obj);
+            //[img sd_setImageWithURL:[NSURL URLWithString:obj] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
+#pragma mark 上边用数组遍历也会出来问题的，断点发现不是就一次。，这个就咬考虑效率问题了。。因为不要遍历，我直接用这个数组_showArray objectAtIndex:indexPath.row就不会错，，用遍历也不会错，，，但是用上边那个直接obj就会错，，是不是用id的原因？？试试改对应对象看看，不行，，不知道在cell类里边创建会怎么样，，，以后遇到这类型的，数组里边放URL的，，要给图片赋值的，就要[_showArray objectAtIndex:indexPath.row]方法，尽量不需要遍历了如果不需要取值。
+            [img sd_setImageWithURL:[NSURL URLWithString:[_showArray objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
+            
+   }];
+        
+        
+        
+        
+        return cell;
+        
+        
+    }
+    
     
     
     //暂时
@@ -267,7 +335,15 @@
     
     
 }
-
+#pragma mark SDCycleScrollViewDelegate
+-(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    //输出看看点击的对不对
+    NSLog(@"index==%ld",(long)index);
+    
+    
+    
+}
 //区高度。。先大概做，，后边在具体调整和计算
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
