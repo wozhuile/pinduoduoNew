@@ -667,6 +667,12 @@ static  NSString*home_super_brandCell=@"home_super_brand";
             [_dataDelegate sendGoods_listIndex:self indexPath:goods.goodsId];
         }
         
+#pragma mark 添加跳转隐藏底部标签栏
+        detailVC.hidesBottomBarWhenPushed=YES;
+        
+
+        
+        
          //[self.navigationController pushViewController:detailVC animated:YES];
     }
     

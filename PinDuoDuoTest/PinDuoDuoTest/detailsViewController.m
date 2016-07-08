@@ -157,6 +157,8 @@
     }];
     
     
+#pragma mark 第二步，第一区固定死值，用字典来做？
+    
     
     
     
@@ -222,6 +224,8 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+
     
     if (indexPath.section==0) {
         
@@ -306,6 +310,7 @@
             [img sd_setImageWithURL:[NSURL URLWithString:[_showArray objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
             
    }];
+     
         
         
         
@@ -314,6 +319,10 @@
         
         
     }
+    
+#pragma mark 展示滚动图片和显示图片的时候，图片反过来了。。需要数组排序下。。
+    
+    
     
     
     
