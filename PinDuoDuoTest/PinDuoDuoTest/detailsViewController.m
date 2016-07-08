@@ -17,6 +17,11 @@
 
 //#import "SDCycleScrollView.h"
 #import <SDCycleScrollView.h>
+#import <TAPageControl.h>
+#import <UIView+SDExtension.h>
+
+
+#import <UIImageView+WebCache.h>
 
 
 
@@ -225,6 +230,21 @@
         }
         
         
+        
+#pragma mark 不知道为什么这个系统提供的方法用不了  分开调用着先吧
+        SDCycleScrollView*scroll=[[SDCycleScrollView alloc]initWithFrame:CGRectMake(0, 0, 414,339 )];//CGRectGetWidth(cell.contentView.frame)用这个就是320
+
+        
+        scroll.imageURLStringsGroup=_scrollArray;
+        scroll.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+       scroll.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+#pragma mark 占位图片
+        [scroll setPlaceholderImage:[UIImage imageNamed:@"default_mall_logo"]];
+        
+        [cell.contentView addSubview:scroll];
+        
+        
+        cell.backgroundColor=[UIColor greenColor];
         return cell;
     }
     
