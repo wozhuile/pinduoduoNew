@@ -553,26 +553,14 @@ static  NSString*home_super_brandCell=@"home_super_brand";
 #pragma mark 单元格点击方法,要做的就是，点击跳转到下一个控制器类，第二，把每个单元格对应的产品的goods——id传值过去，最好还有多少人团和价格，第三，用这个id来拼接http进行请求， 第一个应该简单的，，第二个应该是找到cell，，因为数据源不同，，但是可以试试找到cell，，然后用id 类型来接受，，输出看看都可以得到麼，，如果可以，，就id obj 找到，，试试看吧。。。不行就找到一个就添加一次到数组，然后再传值，，插入法..还有要注意上拉更多的时候。。慢慢一步步来
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
 #warning 注意跳转过来后的效果，，下边的标签栏应该隐藏的，然后再下边创建一个view来做下边的东西。。self.tabBarController.hidesBottomBarWhenPushed
+       //  self.tabBarController.hidesBottomBarWhenPushed
     
-    
-    //  self.tabBarController.hidesBottomBarWhenPushed
-    
-  
-    
-    
-    
-#pragma mark 先输出看看效果，点击对不对先
+  #pragma mark 先输出看看效果，点击对不对先
     //NSLog(@"indexPath.section===%ld  indexPath.row ===%ld",(long)indexPath.section,(long)indexPath.row);
     
     
     //上边可以看出来点击了。。现在做第一步跳转！！
-    
-    
-    
-    
    detailsViewController*detailVC=[[detailsViewController alloc]init];
     
     //[self.navigationController pushViewController:detailVC animated:YES];
@@ -592,24 +580,12 @@ static  NSString*home_super_brandCell=@"home_super_brand";
    // if ([obj isKindOfClass:[home_super_brandTableViewCell class]]) {
         //PDDGoodsList*goods=[_ho];
 #pragma makr 这个要先跳转到超值大牌。。和上边10个按钮的一样，然后才会跳转到拼多多商城，，所以，这里就先不做，，或者，要做，也是先做手势，在手势做说不定好点，，一会先吧
-        
-        
    // }
-    
-    
     //if ([obj isKindOfClass:[goods_listTableViewCell class]]) {
         //先输出数组对不对，一定要是这类型的  ,或者可以在遍历里边限制类型
         //遍历数组把goods都传过去吧
         
-        
-        
-        
-        
-        
-        
-        
-        
-       // [_goods_listArray enumerateObjectsUsingBlock:^(PDDGoodsList*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+         // [_goods_listArray enumerateObjectsUsingBlock:^(PDDGoodsList*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
 #pragma mark 为了试试，先不进行跳转代码。。
             //输出试试看。。是不是要在这个遍历之前进行类型判断
@@ -628,15 +604,6 @@ static  NSString*home_super_brandCell=@"home_super_brand";
              *** First throw call stack:
              (
 */
-            
-            
-            
-            
-            
-            
-            
-            
-            
         //}];
    // }
     
@@ -649,7 +616,7 @@ static  NSString*home_super_brandCell=@"home_super_brand";
         #pragma makr 这个要先跳转到超值大牌。。和上边10个按钮的一样，然后才会跳转到拼多多商城，，所以，这里就先不做，，或者，要做，也是先做手势，在手势做说不定好点，，一会先吧
         //不过可以加个输出试试
         PDDHomeSuperBrand*brand=obj;
-        NSLog(@"%@",brand.goodsList);//数组
+      //  NSLog(@"%@",brand.goodsList);//数组
     }
     if ([obj isKindOfClass:[PDDHomeRecommendSubjects class]]) {
 #warning 注意手势没有放满可能导致的问题。。这里应该也要传值，，因为有些部分点击还是会跳转的
@@ -668,22 +635,18 @@ static  NSString*home_super_brandCell=@"home_super_brand";
          [recomment.goodsList enumerateObjectsUsingBlock:^(PDDGoodsList*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
             //输出试试.其实就点击一次就跳转到cell了。。应该放满手势
-            NSLog(@"PDDHomeRecommendSubjects====%d",(int)obj.goodsId);
+            //NSLog(@"PDDHomeRecommendSubjects====%d",(int)obj.goodsId);
 #warning 推荐点击还崩溃
             /*点击其他的，没有崩溃。。点击这个推荐就崩溃了。。。 2016-07-06 22:03:04.961 PinDuoDuoTest[11346:373401] indexPath.section===3  indexPath.row ===9
              2016-07-06 22:03:04.961 PinDuoDuoTest[11346:373401] -[PDDHomeRecommendSubjects goodsId]: unrecognized selector sent to instance 0x7ffb4c0e3090
              2016-07-06 22:03:04.999 PinDuoDuoTest[11346:373401] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[PDDHomeRecommendSubjects goodsId]: unrecognized selector sent to instance 0x7ffb4c0e3090'
              *** First throw call stac*/
             
-            
-            
         }];
-        
     }
-    
     if ([obj isKindOfClass:[PDDGoodsList class]]) {
         PDDGoodsList*goods=obj;
-        NSLog(@"PDDGoodsList===%d",(int)goods.goodsId);
+        //NSLog(@"PDDGoodsList===%d",(int)goods.goodsId);
         
 #pragma mark 不知道为什么，这里属性传值就可以，，但是下边的代理传值就没用效果，这个本来就是这么简单，那就是代理传值是从后边往前传的，之所以我们在请求的时候看起来就是前往后传，那其实不是前往后，而是里边的block回调，其实本来我们就先有视图了，在里边菜请求，，也就是视图就是前，请求是后，再说block也会回调。。。。一定是后往前传值的
         
@@ -735,15 +698,6 @@ static  NSString*home_super_brandCell=@"home_super_brand";
     
     
 }
-
-
-
-
-
-
-
-
-
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
