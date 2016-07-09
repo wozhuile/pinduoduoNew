@@ -391,7 +391,7 @@ static  NSString*home_super_brandCell=@"home_super_brand";
             
             UILabel*pricelabel=[cell.contentView viewWithTag:idx+75];
             
-            pricelabel.text=[NSString stringWithFormat:@"$%.2f",obj.price/100];
+            pricelabel.text=[NSString stringWithFormat:@"¥%.2f",obj.price/100];
         }];
         
         UILabel*sub=[cell.contentView viewWithTag:22];
@@ -410,7 +410,38 @@ static  NSString*home_super_brandCell=@"home_super_brand";
         cell.goods_name.font=[UIFont systemFontOfSize:13];
         
         cell.customer_num.text=[NSString stringWithFormat:@"%d人团",(int)goodsLists.group.customerNum ];
-        cell.price.text=[NSString stringWithFormat:@"$%.2f",goodsLists.group.price/100];
+        cell.price.text=[NSString stringWithFormat:@"¥%.2f",goodsLists.group.price/100];
+        
+#pragma mark 这样传值好像会再次除以100了,所以要乘以10。。为什么还会变成1呢？？怎么计算的？？
+        //把价格也传过去
+        //_pricePer=cell.price.text;
+        /*2016-07-09 16:09:40.111 PinDuoDuoTest[6284:181999] cell.price.text====¥18.90
+         2016-07-09 16:09:40.111 PinDuoDuoTest[6284:181999] 3333===¥18.90
+         2016-07-09 16:09:40.126 PinDuoDuoTest[6284:181999] cell.price.text====¥1.00
+         2016-07-09 16:09:40.126 PinDuoDuoTest[6284:181999] 3333===¥1.00*/
+        //NSLog(@"cell.price.text====%@",cell.price.text);
+        // NSLog(@"3333===%@",[NSString stringWithFormat:@"¥%.2f",goodsLists.group.price/100]);
+        
+        
+#pragma mark 第一次进来还是对的，，第二次就错了，，，那就条件判断下，第一次,就进去就好。。，空值就进去，或者说长度为0进来，，但是为什么会第二次变成1呢？
+//        if (_pricePer.length==0) {
+//            //,,这样第一次就进来了。。以后都不进来了。。。我无奈了／
+//            _pricePer=[NSString stringWithFormat:@"¥%.2f",goodsLists.group.price/100];
+//            
+//
+//        }
+#pragma mark 不知道怎么回事。。也不要再这里赋值了。。再点击哪里在进行赋值吧，。找到对象直接赋值。。
+     /*   _pricePer=[[NSString alloc]init];
+        
+       _pricePer=[NSString stringWithFormat:@"¥%.2f",goodsLists.group.price/100];
+        
+        
+        _pr=goodsLists.group.price;
+        
+        NSLog(@"4444===%f",goodsLists.group.price);
+        
+        */
+        
         
         return cell;
         
@@ -434,7 +465,7 @@ static  NSString*home_super_brandCell=@"home_super_brand";
             
             
             UILabel*labe=[cell.contentView viewWithTag:10+idx];
-            labe.text=[NSString stringWithFormat:@"$%.2f",obj.price/100];
+            labe.text=[NSString stringWithFormat:@"¥%.2f",obj.price/100];
             labe.textColor=[UIColor redColor];
             
             
@@ -657,15 +688,20 @@ static  NSString*home_super_brandCell=@"home_super_brand";
         
         
         detailVC.dataIndex=goods.goodsId;
+        //之前传值错误了。。不知道为什么 detailVC.priceNum=_pricePer;  在上边cell哪里传值都是1.。。
+
+        //detailVC.priceNum=_pricePer;
+        detailVC.priceNum=[NSString stringWithFormat:@"¥%.2f",goods.group.price/100];
         
 #pragma mark 上边处理好了。。这里也得到goodsID了。。可以过去请求啦。。
         
         
 #pragma mark 创建代理，，让点击跳转的时候，代理传值数据过去...
         
-        if ([_dataDelegate respondsToSelector:@selector(sendGoods_listIndex:indexPath:)]) {
-            [_dataDelegate sendGoods_listIndex:self indexPath:goods.goodsId];
-        }
+//        if ([_dataDelegate respondsToSelector:@selector(sendGoods_listIndex:indexPath:)]) {
+//            [_dataDelegate sendGoods_listIndex:self indexPath:goods.goodsId];
+//        }
+        
         
 #pragma mark 添加跳转隐藏底部标签栏
         detailVC.hidesBottomBarWhenPushed=YES;

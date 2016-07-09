@@ -93,5 +93,10 @@
 #pragma mark 代理传值点击单元格索引过去详情界面，，进行相应请求
 @property(weak,nonatomic)id<ViewControllerDataDelegate>dataDelegate;
 //@property (nonatomic, readonly) id<UIViewControllerPreviewingDelegate> delegate NS_AVAILABLE_IOS(9_0);  和系统的代理名字重合了。。。试试看吧
+
+#pragma 把价格传过去
+@property(nonatomic,copy)NSString* pricePer;
+@property(nonatomic,assign)NSInteger pr;
+
 @end
 

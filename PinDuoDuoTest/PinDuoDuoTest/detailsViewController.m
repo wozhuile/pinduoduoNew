@@ -28,6 +28,9 @@
 
 #import "ScrollAndTopTableViewCell.h"
 #import "ShowScrollTableViewCell.h"
+#import "detailTableViewCell.h"
+//宝贝详情
+static NSString*detailCell=@"detailCell";
 
 
 
@@ -57,6 +60,9 @@
     
     [self createtableView];
     
+    //详情注册
+    [_detailTableView registerNib:[UINib nibWithNibName:@"detailTableViewCell" bundle:nil] forCellReuseIdentifier:detailCell];
+    //  [_buttomDataTableView registerNib:[UINib nibWithNibName:@"goods_listTableViewCell" bundle:nil]   forCellReuseIdentifier:goodsCell];
     
 #pragma mark 遵循首页代理，，实现代理方法
    // _viewDelegate.dataDelegate=self;
@@ -68,7 +74,8 @@
 {
     _scrollArray=[[NSMutableArray alloc]init];
     _showArray=[[NSMutableArray alloc]init];
-    
+#warning 不要再这里就进行初始化了。。这个接受详情的界面，要在下边有值的时候在初始化吧，，否值取出来一开始就indexpath取久崩溃了
+   // _detailTextArray=[[NSMutableArray alloc]init];
     
     
     
@@ -208,6 +215,13 @@
     
     
 #pragma mark 第二步，第一区固定死值，用字典来做？
+#warning 要不要先清空先在放？？否则每次点击就加进来，下次怎么取？？
+    [_detailTextArray removeAllObjects];
+    
+    //先把价格变成字符串，存储到数组，然后再下边就可以id 改为字符串对象类型接受，赋值也方便了
+    NSString*priceStr=[NSString stringWithFormat:@"%d",(int)homeDetail.marketPrice/100];
+    
+    _detailTextArray=[[NSMutableArray alloc]initWithObjects:priceStr,homeDetail.goodsName,homeDetail.goodsDesc, nil];
     
     
     
@@ -278,35 +292,13 @@ void bubble_sory(int array[], int count) {
 }
 
 
-//-(void)bubblesort:(NSArray*)array
-//{
-//    for (int i = 0; i < array.count; i++)
-//    {
-//        
-//        for (int j = i; j < array.count; j++)
-//        {
-//            if (array[i]> array[j])
-//            {
-//                // 大数下沉策略
-//                int temp = array[i];
-//                array[i] = array[j];
-//                array[j] = temp;
-//            }
-//        }
-//    }
-//
-//}
+
 
 
 -(void)failToSendDatailData:(detailModel *)detailModel error:(NSError *)error
 {
     NSLog(@"详情error%@",error);
 }
-
-
-
-
-
 
 
 #pragma mark 进行网络请求,先在那边传数据过来了。。
@@ -316,34 +308,38 @@ void bubble_sory(int array[], int count) {
 //区
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;//先至少6个，按照上边分析的
+    return 7;//先至少6个，按照上边分析的
 }
 
 //行
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    //推荐的药比较多 。看具体来
-    if (section==5) {
+    if (section==6) {
         return 1;//这里放的可能还是一个行，上边放集合视图就好，，不需要之前写的50个
 #warning 注意得到数据的时候修改数组
     }
     //展示图片的
-    if (section==4) {
+    if (section==5) {
         return _showArray.count;//上边得到展示图片数组了。。这里修改
     }
     //展示商品图片的店的图片
-    if (section==3) {
+    if (section==4) {
         return 1;
     }
     //进店
-    if (section==2) {
+    if (section==3) {
         return 1;
     }
 #warning  //评论有些有，有些没有
     //评论有些有，有些没有
-    if (section==1) {
+    if (section==2) {
         return 1;//暂时先这样
         
+    }
+    //展示图片
+    if (section==0) {
+        return 1;
     }
     //详情展示，都不可点击的，所以...
     else{
@@ -396,8 +392,31 @@ void bubble_sory(int array[], int count) {
         return cell;
     }
     
+    if (indexPath.section==1) {
+        
+        detailTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:detailCell];
+        
+        //先判断都是什么类型?
+        //id obj=[_detailTextArray objectAtIndex:indexPath.row];
+        
+        cell.nowPrice.text=[NSString stringWithFormat:@"%@",self.priceNum];
+        cell.nowPrice.textColor=[UIColor redColor];
+        cell.nowPrice.font=[UIFont systemFontOfSize:20];
+        
+        //上边都转换成字符串了。。。再这里id就可以用字符串代替
+        [_detailTextArray enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+        }];
+        
+        
+        
+        
+        return cell;
+        
+    }
     
-    if (indexPath.section==4) {
+    
+    if (indexPath.section==5) {
         
         static NSString*cellID=@"showCell";
         ShowScrollTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -443,32 +462,33 @@ void bubble_sory(int array[], int count) {
             //img.contentMode=UIViewContentModeScaleAspectFit;
             //设置个颜色来看看 效果
             //NSLog(@"11====%f",img.frame.size.width);
-            NSLog(@"11====%f",img.frame.size.height);
+           // NSLog(@"11====%f",img.frame.size.height);
    
             //NSLog(@"11====%f",img.frame.size.width);
 
-            img.backgroundColor=[UIColor redColor];
+            //img.backgroundColor=[UIColor redColor];
             //img.contentMode=UIViewContentModeScaleAspectFit;
 #warning 用这个模型是保持了比例，，但是还需要传进来高度和宽度来具体计算的，，它们都不是唯一一样的，，要不就让服务器给一样宽度和高度的。
             img.contentMode=UIViewContentModeScaleAspectFill;
            // NSLog(@"22====%f",img.frame.size.width);
 
-             NSLog(@"22====%f",img.frame.size.height);
+            // NSLog(@"22====%f",img.frame.size.height);
             
             [img sd_setImageWithURL:[NSURL URLWithString:[_showArray objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
-            NSLog(@"333====%f",img.frame.size.height);
+            //NSLog(@"333====%f",img.frame.size.height);
             //用.clipsToBounds = YES;可以使图片占满整个父容器，并且不变形。
             
 
             //img.clipsToBounds=YES;
             
 
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
    }];
      
         
         
         //看看图片模型的效果
-        cell.backgroundColor=[UIColor orangeColor];
+        //cell.backgroundColor=[UIColor orangeColor];
         
         
         return cell;
@@ -513,24 +533,30 @@ void bubble_sory(int array[], int count) {
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return self.view.frame.size.height;
+        return 340;
     }
     
-    //这个是参团，，是不固定的，，药根据数据源来的。。所以这里就先大概来个100占位下而已
+    
+    
+#pragma mark 再加一个区.宝贝详情介绍
     if (indexPath.section==1) {
+        return 480;
+    }
+    //参加团的//这个是参团，，是不固定的，，药根据数据源来的。。所以这里就先大概来个100占位下而已
+    if (indexPath.section==2) {
         return 100;
     }
     
     //进店
-    if (indexPath.section==2) {
-        return 60;
-    }
-    //标题图片
     if (indexPath.section==3) {
         return 60;
     }
-    //展示的图片，一般10张，每张大概先350到400.。参数给有，，这里就任性先
+    //标题图片
     if (indexPath.section==4) {
+        return 60;
+    }
+    //展示的图片，一般10张，每张大概先350到400.。参数给有，，这里就任性先
+    if (indexPath.section==5) {
         return 530;//之前是350，，不够高度，，我还没有传图片的高度和宽度进来计算。。要自动那个模型来设计，会保持原来图片的宽高比例的。。
     }
     //推荐..看数组给的..先大概给个全屏幕高
@@ -539,6 +565,7 @@ void bubble_sory(int array[], int count) {
         return self.view.frame.size.height;
     
     }
+    
     
 }
 
