@@ -240,6 +240,21 @@ static NSString*groupCell=@"groupCell";
     
     
     
+#pragma 第四步，点击进店,这个是需要请求的，在这里要获取参数去进行请求，直接在这里获取，就去请求就可以了麼？？试试看呗那就。记得如果用数组接受，要先清空。。。不过这里去写好方法，然后调用，应该就可以了。。先去网络请求吧，，
+    
+    //试试看
+    NSLog(@"%d",(int)homeDetail.mallId);
+    [_detail mallData:[NSString stringWithFormat:@"http://apiv2.yangkeduo.com/mall/%d/info",(int)homeDetail.mallId]];
+#warning  //是可以请求得到数据的，，但是问题可能也会来了。。。一会传数据过来，难道也要刷新下？？先试试吧
+   
+    
+    
+    
+    
+    
+    
+    
+    
     [_detailTableView reloadData];
     
     
@@ -409,6 +424,9 @@ void bubble_sory(int array[], int count) {
         
         groupTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:groupCell];
 #pragma mark 这样在cell上button。。没作用。。还是找到方法应该可以，，试试看
+        
+        
+        cell.selectionStyle=0;
 //        cell.icon.layer.cornerRadius=cell.icon.bounds.origin.x/2;
 //        cell.icon.layer.masksToBounds=YES;
 #pragma mark 不知道为什么0不可以。。明明就一个。。注意下。

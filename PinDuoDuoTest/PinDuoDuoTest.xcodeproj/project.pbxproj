@@ -85,6 +85,7 @@
 		04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */; };
 		04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726511D3100E000A14FCC /* groupTableViewCell.m */; };
 		04F726541D3100E000A14FCC /* groupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F726521D3100E000A14FCC /* groupTableViewCell.xib */; };
+		04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726581D3121EE00A14FCC /* MallDataModle.m */; };
 		5D573516C143A35D9C664436 /* libPods-PinDuoDuoTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */; };
 /* End PBXBuildFile section */
 
@@ -232,6 +233,9 @@
 		04F726501D3100E000A14FCC /* groupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupTableViewCell.h; sourceTree = "<group>"; };
 		04F726511D3100E000A14FCC /* groupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = groupTableViewCell.m; sourceTree = "<group>"; };
 		04F726521D3100E000A14FCC /* groupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = groupTableViewCell.xib; sourceTree = "<group>"; };
+		04F726561D3121EE00A14FCC /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		04F726571D3121EE00A14FCC /* MallDataModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallDataModle.h; sourceTree = "<group>"; };
+		04F726581D3121EE00A14FCC /* MallDataModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallDataModle.m; sourceTree = "<group>"; };
 		3D46221AC769B6C7362D2106 /* Pods-PinDuoDuoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.debug.xcconfig"; sourceTree = "<group>"; };
 		62A8D909C68FE03580039E03 /* Pods-PinDuoDuoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.release.xcconfig"; sourceTree = "<group>"; };
 		DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinDuoDuoTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +319,7 @@
 		04D70A7F1D2D2DEF000148D3 /* 点击数据 */ = {
 			isa = PBXGroup;
 			children = (
+				04F726551D3121EE00A14FCC /* 进店 */,
 				04D70A801D2D2E04000148D3 /* 首页单元格点击数据 */,
 				04ED4BE71D2DFD5400966F76 /* detailModel.h */,
 				04ED4BE81D2DFD5400966F76 /* detailModel.m */,
@@ -777,6 +782,16 @@
 			name = "团";
 			sourceTree = "<group>";
 		};
+		04F726551D3121EE00A14FCC /* 进店 */ = {
+			isa = PBXGroup;
+			children = (
+				04F726561D3121EE00A14FCC /* DataModels.h */,
+				04F726571D3121EE00A14FCC /* MallDataModle.h */,
+				04F726581D3121EE00A14FCC /* MallDataModle.m */,
+			);
+			path = "进店";
+			sourceTree = "<group>";
+		};
 		70DA17A325F1BC9851930E6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,6 +983,7 @@
 				04E377591D28BA5E00467A06 /* NewBuyMessageModle.m in Sources */,
 				04EBDC6C1D24170A00E7EFA7 /* rankVIew.m in Sources */,
 				04E221981D22211F0042B3C7 /* ViewController.m in Sources */,
+				04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */,
 				0440422F1D275F200015D3E6 /* promotion_listTableViewCell.m in Sources */,
 				04D70A8D1D2D2E04000148D3 /* HomeSku.m in Sources */,
 				04E221AF1D22218A0042B3C7 /* PDDHotViewController.m in Sources */,

@@ -43,4 +43,38 @@
     
 }
 
+-(void)mallData:(NSString*)mall_idString
+{
+    
+    AFHTTPSessionManager*manager=[AFHTTPSessionManager manager];
+    
+    [manager GET:mall_idString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        //试试输出看看可以直接在上个数据源哪里直接接受就请求麼，。。还是先接受数据，然后滚动一段距离在刷新请求？？
+        NSLog(@"%@",responseObject);
+        
+        MallDataModle*mallModel=[MallDataModle modelObjectWithDictionary:responseObject];
+        
+        if ([_delegate respondsToSelector:@selector(successToGetMallData:mall:)]) {
+            [_delegate successToGetMallData:self mall:mallModel];
+        }
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        
+        if ([_delegate respondsToSelector:@selector(failToGetMallData:error:)]) {
+            [_delegate failToGetMallData:self error:error];
+        }
+        
+        
+        
+    }];
+    
+    
+    
+
+}
+
+
 @end
