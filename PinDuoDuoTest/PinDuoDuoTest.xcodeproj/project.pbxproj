@@ -83,6 +83,8 @@
 		04ED696A1D238A1200098325 /* home_recommend_subjectsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ED69681D238A1200098325 /* home_recommend_subjectsTableViewCell.xib */; };
 		04F7264D1D30DD4600A14FCC /* detailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */; };
 		04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */; };
+		04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726511D3100E000A14FCC /* groupTableViewCell.m */; };
+		04F726541D3100E000A14FCC /* groupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F726521D3100E000A14FCC /* groupTableViewCell.xib */; };
 		5D573516C143A35D9C664436 /* libPods-PinDuoDuoTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +229,9 @@
 		04F7264A1D30DD4600A14FCC /* detailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailTableViewCell.h; sourceTree = "<group>"; };
 		04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailTableViewCell.m; sourceTree = "<group>"; };
 		04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = detailTableViewCell.xib; sourceTree = "<group>"; };
+		04F726501D3100E000A14FCC /* groupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupTableViewCell.h; sourceTree = "<group>"; };
+		04F726511D3100E000A14FCC /* groupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = groupTableViewCell.m; sourceTree = "<group>"; };
+		04F726521D3100E000A14FCC /* groupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = groupTableViewCell.xib; sourceTree = "<group>"; };
 		3D46221AC769B6C7362D2106 /* Pods-PinDuoDuoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.debug.xcconfig"; sourceTree = "<group>"; };
 		62A8D909C68FE03580039E03 /* Pods-PinDuoDuoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.release.xcconfig"; sourceTree = "<group>"; };
 		DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinDuoDuoTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +252,7 @@
 		043125FF1D2EA32C00C2FCC7 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04F7264F1D3100BF00A14FCC /* 团 */,
 				04F726491D30DD1D00A14FCC /* 详情 */,
 				04598DE01D2FE41300AABA72 /* 第五区 */,
 				043126061D2EA3B400C2FCC7 /* 展示图片 */,
@@ -761,6 +767,16 @@
 			name = "详情";
 			sourceTree = "<group>";
 		};
+		04F7264F1D3100BF00A14FCC /* 团 */ = {
+			isa = PBXGroup;
+			children = (
+				04F726501D3100E000A14FCC /* groupTableViewCell.h */,
+				04F726511D3100E000A14FCC /* groupTableViewCell.m */,
+				04F726521D3100E000A14FCC /* groupTableViewCell.xib */,
+			);
+			name = "团";
+			sourceTree = "<group>";
+		};
 		70DA17A325F1BC9851930E6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +873,7 @@
 				04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */,
 				04DAD4661D2BE9C70027D466 /* purChaseCollectionViewCell.xib in Resources */,
 				04E221B01D22218A0042B3C7 /* PDDHotViewController.xib in Resources */,
+				04F726541D3100E000A14FCC /* groupTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +983,7 @@
 				04E3775B1D28BA5E00467A06 /* NewGroup.m in Sources */,
 				04DF699B1D2C01DE00DF3D6A /* puchaseModle.m in Sources */,
 				04E259721D2A15F9006F488B /* textFieldTableViewCell.m in Sources */,
+				04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */,
 				0431260A1D2EA3C900C2FCC7 /* showTableViewCell.m in Sources */,
 				04E221921D22211F0042B3C7 /* main.m in Sources */,
 				04E221B51D2221A60042B3C7 /* PDDRankViewController.m in Sources */,

@@ -31,8 +31,13 @@
 #import "detailTableViewCell.h"
 //宝贝详情
 static NSString*detailCell=@"detailCell";
-
+//团
+static NSString*groupCell=@"groupCell";
 #import "UIColor+Hex.h"
+
+#import "groupTableViewCell.h"
+
+
 
 @interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate,SDCycleScrollViewDelegate>
 
@@ -56,13 +61,17 @@ static NSString*detailCell=@"detailCell";
     [self initArray];
     
     
-    
+   
     
     [self createtableView];
     
     //详情注册
     [_detailTableView registerNib:[UINib nibWithNibName:@"detailTableViewCell" bundle:nil] forCellReuseIdentifier:detailCell];
     //  [_buttomDataTableView registerNib:[UINib nibWithNibName:@"goods_listTableViewCell" bundle:nil]   forCellReuseIdentifier:goodsCell];
+    
+    //团
+       [_detailTableView registerNib:[UINib nibWithNibName:@"groupTableViewCell" bundle:nil] forCellReuseIdentifier:groupCell];
+    
     
 #pragma mark 遵循首页代理，，实现代理方法
    // _viewDelegate.dataDelegate=self;
@@ -77,7 +86,7 @@ static NSString*detailCell=@"detailCell";
 #warning 不要再这里就进行初始化了。。这个接受详情的界面，要在下边有值的时候在初始化吧，，否值取出来一开始就indexpath取久崩溃了
    // _detailTextArray=[[NSMutableArray alloc]init];
     
-    
+    _groupArray=[[NSMutableArray alloc]init];
     
     
 }
@@ -88,7 +97,7 @@ static NSString*detailCell=@"detailCell";
     _detailTableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];//注意样式
     _detailTableView.delegate=self;
     _detailTableView.dataSource=self;
-    _detailTableView.backgroundColor=[UIColor greenColor];
+    //_detailTableView.backgroundColor=[UIColor greenColor];
     [self.view addSubview:_detailTableView];
     
 #pragma mark  不知道为什么下边对象在没有创建这里的时候一直是空了。跳转斗这样麼？？这前的都不是跳转的，声明属性都可以了。。现在这里还需要创建对象才可以有对象，，，不过好像也是啊
@@ -226,6 +235,10 @@ static NSString*detailCell=@"detailCell";
     _detailTextArray=[[NSMutableArray alloc]initWithObjects:priceStr,homeDetail.goodsName,homeDetail.goodsDesc,sales, nil];
     
     
+#warning 第三步  团  然后去判断有没有团，没有这里高度就没有了／
+    _groupArray=[[NSMutableArray alloc]initWithArray:homeDetail.group];
+    
+    
     
     [_detailTableView reloadData];
     
@@ -306,49 +319,6 @@ void bubble_sory(int array[], int count) {
 #pragma mark 进行网络请求,先在那边传数据过来了。。
 
 
-#pragma mark tableview   delegate  and  datasource
-//区
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 7;//先至少6个，按照上边分析的
-}
-
-//行
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-   //推荐的药比较多 。看具体来
-    if (section==6) {
-        return 1;//这里放的可能还是一个行，上边放集合视图就好，，不需要之前写的50个
-#warning 注意得到数据的时候修改数组
-    }
-    //展示图片的
-    if (section==5) {
-        return _showArray.count;//上边得到展示图片数组了。。这里修改
-    }
-    //展示商品图片的店的图片
-    if (section==4) {
-        return 1;
-    }
-    //进店
-    if (section==3) {
-        return 1;
-    }
-#warning  //评论有些有，有些没有
-    //评论有些有，有些没有
-    if (section==2) {
-        return 1;//暂时先这样
-        
-    }
-    //展示图片
-    if (section==0) {
-        return 1;
-    }
-    //详情展示，都不可点击的，所以...
-    else{
-        return 1;
-    }
-    
-}
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -390,7 +360,7 @@ void bubble_sory(int array[], int count) {
         //缓存
         [scroll clearCache];
         
-        cell.backgroundColor=[UIColor greenColor];
+        //cell.backgroundColor=[UIColor greenColor];
         return cell;
     }
     
@@ -433,6 +403,46 @@ void bubble_sory(int array[], int count) {
         return cell;
         
     }
+    
+    
+    if (indexPath.section==2) {
+        
+        groupTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:groupCell];
+#pragma mark 这样在cell上button。。没作用。。还是找到方法应该可以，，试试看
+//        cell.icon.layer.cornerRadius=cell.icon.bounds.origin.x/2;
+//        cell.icon.layer.masksToBounds=YES;
+#pragma mark 不知道为什么0不可以。。明明就一个。。注意下。
+//         UIButton*btn=[cell.contentView viewWithTag:0];
+        UIButton*btn=[cell.contentView viewWithTag:9];
+        btn.layer.cornerRadius=22;
+         btn.layer.masksToBounds=YES;
+        
+
+        
+        
+        
+        cell.personName.text=[NSString stringWithFormat:@"待定%ld",(long)indexPath.row];
+        cell.personName.font=[UIFont systemFontOfSize:12];
+        
+        
+        cell.cityName.text=[NSString stringWithFormat:@"🌍%ld",(long)indexPath.row];
+        cell.cityName.font=[UIFont systemFontOfSize:12];
+
+        
+        
+        cell.needPeople.text=[NSString stringWithFormat:@"还差%ld人成团",(long)indexPath.row];
+        cell.needPeople.font=[UIFont systemFontOfSize:12];
+        cell.needPeople.textColor=[UIColor redColor];
+        
+        
+        cell.needTime.text=@"剩余  :  :  :结束";
+        cell.needTime.font=[UIFont systemFontOfSize:12];
+
+        return cell;
+        
+        
+    }
+    
     
     
     if (indexPath.section==5) {
@@ -488,7 +498,7 @@ void bubble_sory(int array[], int count) {
             //img.backgroundColor=[UIColor redColor];
             //img.contentMode=UIViewContentModeScaleAspectFit;
 #warning 用这个模型是保持了比例，，但是还需要传进来高度和宽度来具体计算的，，它们都不是唯一一样的，，要不就让服务器给一样宽度和高度的。
-            img.contentMode=UIViewContentModeScaleAspectFill;
+            //img.contentMode=UIViewContentModeScaleAspectFill;
            // NSLog(@"22====%f",img.frame.size.width);
 
             // NSLog(@"22====%f",img.frame.size.height);
@@ -548,6 +558,56 @@ void bubble_sory(int array[], int count) {
     
     
 }
+
+#pragma mark tableview   delegate  and  datasource
+//区
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 7;//先至少6个，按照上边分析的
+}
+
+//行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //推荐的药比较多 。看具体来
+    if (section==6) {
+        return 1;//这里放的可能还是一个行，上边放集合视图就好，，不需要之前写的50个
+#warning 注意得到数据的时候修改数组
+    }
+    //展示图片的
+    if (section==5) {
+        return _showArray.count;//上边得到展示图片数组了。。这里修改
+    }
+    //展示商品图片的店的图片
+    if (section==4) {
+        return 1;
+    }
+    //进店
+    if (section==3) {
+        return 1;
+    }
+#warning  //评论有些有，有些没有
+    //评论有些有，有些没有
+    if (section==2) {
+        
+#pragma mark 根据团数组数目来
+        if (_groupArray.count>0) {
+             return _groupArray.count;
+        }
+        return 0;//在展示的时候也要小心的。。
+        
+    }
+    //展示图片
+    if (section==0) {
+        return 1;
+    }
+    //详情展示，都不可点击的，所以...
+    else{
+        return 1;
+    }
+    
+}
+
 //区高度。。先大概做，，后边在具体调整和计算
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -563,7 +623,15 @@ void bubble_sory(int array[], int count) {
     }
     //参加团的//这个是参团，，是不固定的，，药根据数据源来的。。所以这里就先大概来个100占位下而已
     if (indexPath.section==2) {
-        return 100;
+        
+#pragma makr 根据团有没有来判断
+        if (_groupArray.count>0) {
+            return 60;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
     //进店

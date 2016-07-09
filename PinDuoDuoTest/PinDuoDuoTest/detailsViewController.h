@@ -49,8 +49,8 @@ typedef void(^sendIndexPath) (NSInteger indexPath);
 
 #pragma mark 
 @property(nonatomic,strong)NSMutableArray*detailTextArray;
-#pragma makr 第三步
-
+#pragma makr 第三步 ，，是不是有团，
+@property(nonatomic,strong)NSMutableArray*groupArray;
 
 
 @end
