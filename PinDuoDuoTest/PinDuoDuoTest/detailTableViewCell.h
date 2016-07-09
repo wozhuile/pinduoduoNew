@@ -17,9 +17,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *goods_desc;
 
+@property (weak, nonatomic) IBOutlet UILabel *tuan;
 
+@property (weak, nonatomic) IBOutlet UILabel *sales;
 
-
+@property (weak, nonatomic) IBOutlet UILabel *xiaohuoban;
 
 
 

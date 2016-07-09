@@ -32,7 +32,7 @@
 //宝贝详情
 static NSString*detailCell=@"detailCell";
 
-
+#import "UIColor+Hex.h"
 
 @interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate,SDCycleScrollViewDelegate>
 
@@ -219,9 +219,11 @@ static NSString*detailCell=@"detailCell";
     [_detailTextArray removeAllObjects];
     
     //先把价格变成字符串，存储到数组，然后再下边就可以id 改为字符串对象类型接受，赋值也方便了
-    NSString*priceStr=[NSString stringWithFormat:@"%d",(int)homeDetail.marketPrice/100];
+    NSString*priceStr=[NSString stringWithFormat:@"¥%.1f",homeDetail.marketPrice/100];
+    NSString*sales=[NSString stringWithFormat:@"%d",(int)homeDetail.sales];
+
     
-    _detailTextArray=[[NSMutableArray alloc]initWithObjects:priceStr,homeDetail.goodsName,homeDetail.goodsDesc, nil];
+    _detailTextArray=[[NSMutableArray alloc]initWithObjects:priceStr,homeDetail.goodsName,homeDetail.goodsDesc,sales, nil];
     
     
     
@@ -394,22 +396,39 @@ void bubble_sory(int array[], int count) {
     
     if (indexPath.section==1) {
         
+#pragma mark 细节还有抽奖的类型没有sale，还有抽奖规则，，这些细节没做
         detailTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:detailCell];
         
+        cell.selectionStyle=0;
         //先判断都是什么类型?
         //id obj=[_detailTextArray objectAtIndex:indexPath.row];
         
         cell.nowPrice.text=[NSString stringWithFormat:@"%@",self.priceNum];
         cell.nowPrice.textColor=[UIColor redColor];
-        cell.nowPrice.font=[UIFont systemFontOfSize:20];
+        cell.nowPrice.font=[UIFont systemFontOfSize:17];
         
         //上边都转换成字符串了。。。再这里id就可以用字符串代替
-        [_detailTextArray enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //[_detailTextArray enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-        }];
+            //cell.market_price.text=[];
+            
+        //}];
+        //其实因为知道存储进去的，，不需要遍历也可以取出来的／／／这里数据也不多。。试试看吧
+        cell.market_price.text=[_detailTextArray objectAtIndex:0];
+        cell.market_price.font=[UIFont systemFontOfSize:13];
+        cell.goods_name.text=[_detailTextArray objectAtIndex:1 ];
+        cell.goods_name.textColor=[UIColor colorWithHexString:@"#181818"];
         
         
+        cell.goods_desc.font=[UIFont systemFontOfSize:14];
         
+        cell.goods_desc.text=[_detailTextArray objectAtIndex:2];
+        cell.goods_desc.textColor=[UIColor colorWithHexString:@"#707070"];
+        cell.sales.text=[_detailTextArray objectAtIndex:3];
+        cell.sales.font=[UIFont systemFontOfSize:13];
+        
+   
+        cell.xiaohuoban.backgroundColor=[UIColor colorWithHexString:@"#eeeeee"];
         
         return cell;
         
@@ -540,7 +559,7 @@ void bubble_sory(int array[], int count) {
     
 #pragma mark 再加一个区.宝贝详情介绍
     if (indexPath.section==1) {
-        return 480;
+        return 330;
     }
     //参加团的//这个是参团，，是不固定的，，药根据数据源来的。。所以这里就先大概来个100占位下而已
     if (indexPath.section==2) {

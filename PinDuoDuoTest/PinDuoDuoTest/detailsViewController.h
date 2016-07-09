@@ -49,6 +49,8 @@ typedef void(^sendIndexPath) (NSInteger indexPath);
 
 #pragma mark 
 @property(nonatomic,strong)NSMutableArray*detailTextArray;
+#pragma makr 第三步
+
 
 
 @end
