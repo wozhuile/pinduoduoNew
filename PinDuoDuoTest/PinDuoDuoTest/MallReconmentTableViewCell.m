@@ -117,7 +117,7 @@ static NSString*cellID=@"cell";
 #pragma mark 布局数据吧
     MallList*list=[_recommentArray objectAtIndex:indexPath.row];
     [cell.thumb_url sd_setImageWithURL:[NSURL URLWithString:list.thumbUrl] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
-    cell.price.text=[NSString stringWithFormat:@"¥%.f",list.price/100];
+    cell.price.text=[NSString stringWithFormat:@"¥%.1f",list.price/100];
     cell.price.font=[UIFont systemFontOfSize:14];
     cell.price.textColor=[UIColor redColor];
     cell.goods_name.text=list.goodsName;

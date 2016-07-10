@@ -35,6 +35,8 @@ static NSString*detailCell=@"detailCell";
 static NSString*groupCell=@"groupCell";
 //进店
 static NSString*mallCell=@"mallCell";
+//猜你喜欢
+static NSString*guessCell=@"guessCell";
 
 
 
@@ -45,6 +47,8 @@ static NSString*mallCell=@"mallCell";
 #import "MallTableViewCell.h"
 
 #import "MallReconmentTableViewCell.h"
+
+#import "GuessTableViewCell.h"
 
 
 @interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate,SDCycleScrollViewDelegate>
@@ -83,9 +87,10 @@ static NSString*mallCell=@"mallCell";
     
     //进店
     [_detailTableView registerNib:[UINib nibWithNibName:@"MallTableViewCell" bundle:nil] forCellReuseIdentifier:mallCell];
-    
+   
 
-    
+    //进店
+  /// [_detailTableView registerNib:[UINib nibWithNibName:@"  GuessTableViewCell" bundle:nil] forCellReuseIdentifier:guessCell];
     
 #pragma mark 遵循首页代理，，实现代理方法
    // _viewDelegate.dataDelegate=self;
@@ -584,8 +589,37 @@ void bubble_sory(int array[], int count) {
         
     }
     
-
     if (indexPath.section==5) {
+        //static NSString*cellID=@"guessCell";
+        
+        GuessTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:guessCell ];
+        
+     if (cell==nil) {
+            cell=[[GuessTableViewCell alloc]init];
+            cell.selectionStyle=0;
+        }
+
+        UILabel*lab=[cell.contentView viewWithTag:99];
+        lab.text=@"您可能喜欢";
+        lab.textColor=[UIColor colorWithHexString:@"#181818"];
+        lab.font=[UIFont systemFontOfSize:15];
+        //cell.backgroundColor=[UIColor redColor];
+#pragma mark 拖拽哪里都赋值了，，这里在赋值就问题了。。
+        // cell.guessLabel.text=@"您可能喜欢";
+        //cell.guessLabel.textColor=[UIColor colorWithHexString:@"#181818"];
+        //cell.guessLabel.font=[UIFont systemFontOfSize:15];
+        
+        
+        return cell;
+        
+        
+        
+    }
+    
+    
+    
+
+    if (indexPath.section==6) {
         
         static NSString*cellID=@"reconmentCell";
         MallReconmentTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -610,6 +644,10 @@ void bubble_sory(int array[], int count) {
         
         
     }
+    
+    
+#warning 第七区不写了。。。是到达底部
+    
     
       //暂时
     static NSString*cellID=@"cell";
@@ -643,21 +681,29 @@ void bubble_sory(int array[], int count) {
 //区
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;//先至少6个，按照上边分析的
+    return 8;//先至少6个，按照上边分析的
 }
 
 //行
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //到底／。。。。。
-    if (section==6) {
+    if (section==7) {
         return 1;//这里放的可能还是一个行，上边放集合视图就好，，不需要之前写的50个
 #warning 注意得到数据的时候修改数组
     }
     //推荐的药比较多 。看具体来
-    if (section==5) {
+    if (section==6) {
         return 1;//上边得到展示图片数组了。。这里修改
     }
+    
+#pragma mark 在推荐前，有一行叫猜你喜欢
+    if (section==5) {
+        return 1;
+    }
+    
+    
+    
     //展示图片
     if (section==4) {
         return _showArray.count;
@@ -726,9 +772,15 @@ void bubble_sory(int array[], int count) {
     if (indexPath.section==4) {
         return 530;//之前是350，，不够高度，，我还没有传图片的高度和宽度进来计算。。要自动那个模型来设计，会保持原来图片的宽高比例的。。
     }
-   //推荐..看数组给的..先大概给个全屏幕高
+    
+    //猜你喜欢
     if (indexPath.section==5) {
-        NSLog(@"5555===%f",self.view.frame.size.width);
+        return 40;
+    }
+    
+   //推荐..看数组给的..先大概给个全屏幕高
+    if (indexPath.section==6) {
+       // NSLog(@"5555===%f",self.view.frame.size.width);
        // NSLog(@"%f",self.view.frame.size.height);
       //return self.view.frame.size.height;
         return 600;
@@ -739,7 +791,7 @@ void bubble_sory(int array[], int count) {
     //到底
     else
     {
-        return 200;
+        return 60;
     
     }
     

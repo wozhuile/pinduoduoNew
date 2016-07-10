@@ -85,6 +85,8 @@
 		04EF198C1D31E080003D8E94 /* MallReconmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF198A1D31E080003D8E94 /* MallReconmentTableViewCell.xib */; };
 		04EF19901D31E769003D8E94 /* reconmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF198E1D31E769003D8E94 /* reconmentCollectionViewCell.m */; };
 		04EF19911D31E769003D8E94 /* reconmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF198F1D31E769003D8E94 /* reconmentCollectionViewCell.xib */; };
+		04EF19971D3231F3003D8E94 /* GuessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF19951D3231F3003D8E94 /* GuessTableViewCell.m */; };
+		04EF19991D3237F6003D8E94 /* GuessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF199B1D3237F6003D8E94 /* GuessTableViewCell.xib */; };
 		04F7264D1D30DD4600A14FCC /* detailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */; };
 		04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */; };
 		04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726511D3100E000A14FCC /* groupTableViewCell.m */; };
@@ -241,6 +243,9 @@
 		04EF198D1D31E769003D8E94 /* reconmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reconmentCollectionViewCell.h; sourceTree = "<group>"; };
 		04EF198E1D31E769003D8E94 /* reconmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reconmentCollectionViewCell.m; sourceTree = "<group>"; };
 		04EF198F1D31E769003D8E94 /* reconmentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reconmentCollectionViewCell.xib; sourceTree = "<group>"; };
+		04EF19941D3231F3003D8E94 /* GuessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessTableViewCell.h; sourceTree = "<group>"; };
+		04EF19951D3231F3003D8E94 /* GuessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessTableViewCell.m; sourceTree = "<group>"; };
+		04EF199A1D3237F6003D8E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GuessTableViewCell.xib; sourceTree = "<group>"; };
 		04F7264A1D30DD4600A14FCC /* detailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailTableViewCell.h; sourceTree = "<group>"; };
 		04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailTableViewCell.m; sourceTree = "<group>"; };
 		04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = detailTableViewCell.xib; sourceTree = "<group>"; };
@@ -278,6 +283,7 @@
 		043125FF1D2EA32C00C2FCC7 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04EF19931D3231D6003D8E94 /* 猜你喜欢 */,
 				04EF19921D31E832003D8E94 /* 推荐 */,
 				04F7265A1D312A3000A14FCC /* 进店 */,
 				04F7264F1D3100BF00A14FCC /* 团 */,
@@ -776,6 +782,16 @@
 			name = "推荐";
 			sourceTree = "<group>";
 		};
+		04EF19931D3231D6003D8E94 /* 猜你喜欢 */ = {
+			isa = PBXGroup;
+			children = (
+				04EF19941D3231F3003D8E94 /* GuessTableViewCell.h */,
+				04EF19951D3231F3003D8E94 /* GuessTableViewCell.m */,
+				04EF199B1D3237F6003D8E94 /* GuessTableViewCell.xib */,
+			);
+			name = "猜你喜欢";
+			sourceTree = "<group>";
+		};
 		04F6D6571D2AAED100E04387 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,6 +962,7 @@
 				04598DE51D2FE43F00AABA72 /* ShowScrollTableViewCell.xib in Resources */,
 				04E221B61D2221A60042B3C7 /* PDDRankViewController.xib in Resources */,
 				04E1B5F41D24FE7A0013515A /* HotCollectionViewCell.xib in Resources */,
+				04EF19991D3237F6003D8E94 /* GuessTableViewCell.xib in Resources */,
 				04E221C21D2221D50042B3C7 /* PDDMeViewController.xib in Resources */,
 				04E32B291D26A75C00A96D34 /* 520.gif in Resources */,
 				04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */,
@@ -1047,6 +1064,7 @@
 				04E377591D28BA5E00467A06 /* NewBuyMessageModle.m in Sources */,
 				04F726661D313D7400A14FCC /* MallList.m in Sources */,
 				04EBDC6C1D24170A00E7EFA7 /* rankVIew.m in Sources */,
+				04EF19971D3231F3003D8E94 /* GuessTableViewCell.m in Sources */,
 				04F726671D313D7400A14FCC /* MallRecomentModle.m in Sources */,
 				04E221981D22211F0042B3C7 /* ViewController.m in Sources */,
 				04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */,
@@ -1094,6 +1112,14 @@
 				04E221A21D22211F0042B3C7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04EF199B1D3237F6003D8E94 /* GuessTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04EF199A1D3237F6003D8E94 /* Base */,
+			);
+			name = GuessTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
