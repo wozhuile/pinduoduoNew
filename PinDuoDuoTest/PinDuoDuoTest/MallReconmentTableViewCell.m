@@ -9,6 +9,9 @@
 #import "MallReconmentTableViewCell.h"
 
 #import "reconmentCollectionViewCell.h"
+#import "MallList.h"
+#import <UIImageView+WebCache.h>
+
 
 static NSString*cellID=@"cell";
 
@@ -71,8 +74,9 @@ static NSString*cellID=@"cell";
 #warning 忘记数据源代理声明，，难怪下边多少行都没有调用
         _collection.dataSource=self;
         
+#warning 集合视图不设置背景颜色，都是黑色
         
-        _collection.backgroundColor=[UIColor greenColor];
+        _collection.backgroundColor=[UIColor whiteColor];
         //注册
         [_collection registerNib:[UINib nibWithNibName:@"reconmentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellID];
         
@@ -107,10 +111,22 @@ static NSString*cellID=@"cell";
     
     
      //试试看，，首先没有崩溃了。。在布局数据什么的
-    cell.price.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    //cell.price.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
     
     
-    cell.backgroundColor=[UIColor redColor];
+#pragma mark 布局数据吧
+    MallList*list=[_recommentArray objectAtIndex:indexPath.row];
+    [cell.thumb_url sd_setImageWithURL:[NSURL URLWithString:list.thumbUrl] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
+    cell.price.text=[NSString stringWithFormat:@"¥%.f",list.price/100];
+    cell.price.font=[UIFont systemFontOfSize:14];
+    cell.price.textColor=[UIColor redColor];
+    cell.goods_name.text=list.goodsName;
+    cell.goods_name.font=[UIFont systemFontOfSize:12];
+#pragma mark 推荐收藏那个图片太模糊。。。加了的
+    
+    
+    
+   // cell.backgroundColor=[UIColor redColor];
     return cell;
     
     
