@@ -33,9 +33,16 @@
 static NSString*detailCell=@"detailCell";
 //团
 static NSString*groupCell=@"groupCell";
+//进店
+static NSString*mallCell=@"mallCell";
+
+
 #import "UIColor+Hex.h"
 
 #import "groupTableViewCell.h"
+
+#import "MallTableViewCell.h"
+
 
 
 
@@ -71,6 +78,12 @@ static NSString*groupCell=@"groupCell";
     
     //团
        [_detailTableView registerNib:[UINib nibWithNibName:@"groupTableViewCell" bundle:nil] forCellReuseIdentifier:groupCell];
+    
+    
+    //进店
+    [_detailTableView registerNib:[UINib nibWithNibName:@"MallTableViewCell" bundle:nil] forCellReuseIdentifier:mallCell];
+    
+
     
     
 #pragma mark 遵循首页代理，，实现代理方法
@@ -246,11 +259,13 @@ static NSString*groupCell=@"groupCell";
     NSLog(@"%d",(int)homeDetail.mallId);
     [_detail mallData:[NSString stringWithFormat:@"http://apiv2.yangkeduo.com/mall/%d/info",(int)homeDetail.mallId]];
 #warning  //是可以请求得到数据的，，但是问题可能也会来了。。。一会传数据过来，难道也要刷新下？？先试试吧
+    
+    
+    
    
+#pragma mark 进店推荐，输出试试看
     
-    
-    
-    
+    [_detail mallRecomentRequest:[NSString stringWithFormat:@"http://apiv2.yangkeduo.com/recommendation?goods_id=%d&referrer=goods",(int)_dataIndex]];
     
     
     
@@ -263,6 +278,39 @@ static NSString*groupCell=@"groupCell";
     
     
 }
+#warning 一定要注意一会刷新会调用几次，，是不是会出现bug，，会不会消耗CPU等。。。
+#pragma mark   mall的数据
+-(void)successToGetMallData:(detailModel *)mallModle mall:(MallDataModle *)mall
+{
+    
+    //先输出试试，
+    //NSLog(@"mall====%@",mall);//可以得到数据
+    
+    
+#pragma mark 因为就一个最外边的model基础类得到数据和使用，也不会有下边的请求，数据刷新也不怕了吧应该  直接和上边那样创建一个数组来接受吧。。反正不多，直接indexpath0，1，2，3，。。。就可以了。。
+    //记得最好用字符串来啦
+#warning 最好先清空之前的数组数据
+    [_mallArray removeAllObjects];
+    NSString*mall_saleStr=[NSString stringWithFormat:@"%d",(int)mall.mallSales];
+    NSString*urlStr=[NSString stringWithFormat:@"%@",mall.logo];
+
+    _mallArray=[[NSMutableArray alloc]initWithObjects:mall_saleStr,urlStr,mall.mallName, nil];
+    
+#warning 注意刷新次数，考虑刷新效率和后果
+    [_detailTableView reloadData];
+    
+    
+    
+}
+-(void)failToGetMallData:(detailModel *)mallModle error:(NSError *)error
+{
+    NSLog(@"mallError==%@",error);
+}
+
+
+
+
+
 
 /*void bubbleSort(int arrry[]);
 
@@ -461,9 +509,27 @@ void bubble_sory(int array[], int count) {
         
     }
     
+    if (indexPath.section==3) {
+        
+#pragma mark 还有个，就是进店观光那个框没做，，，找不到边框的就用view来做吧      ,已经用label做了
+        MallTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:mallCell];
+        cell.selectionStyle=0;
+        //注意存放的顺序，是不是1
+        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[_mallArray objectAtIndex:1]] placeholderImage:[UIImage imageNamed:@"default_mall_logo"]];
+        cell.mall_sales.text=[_mallArray objectAtIndex:0];
+        //NSLog(@"===%@",[_mallArray objectAtIndex:0]);
+        cell.mall_sales.font=[UIFont systemFontOfSize:13];
+        
+        cell.mall_name.text=[_mallArray objectAtIndex:2];
+        //cell.mall_name.font=[UIFont systemFontOfSize:13];
+        
+        
+        
+        return cell;
+    }
     
     
-    if (indexPath.section==5) {
+    if (indexPath.section==4) {
         
         static NSString*cellID=@"showCell";
         ShowScrollTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -587,18 +653,18 @@ void bubble_sory(int array[], int count) {
 //行
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //推荐的药比较多 。看具体来
+    //到底／。。。。。
     if (section==6) {
         return 1;//这里放的可能还是一个行，上边放集合视图就好，，不需要之前写的50个
 #warning 注意得到数据的时候修改数组
     }
-    //展示图片的
+    //推荐的药比较多 。看具体来
     if (section==5) {
-        return _showArray.count;//上边得到展示图片数组了。。这里修改
+        return 1;//上边得到展示图片数组了。。这里修改
     }
-    //展示商品图片的店的图片
+    //展示图片
     if (section==4) {
-        return 1;
+        return _showArray.count;
     }
     //进店
     if (section==3) {
@@ -615,12 +681,16 @@ void bubble_sory(int array[], int count) {
         return 0;//在展示的时候也要小心的。。
         
     }
+    
+    
+    
     //展示图片
     if (section==0) {
         return 1;
     }
-    //详情展示，都不可点击的，所以...
-    else{
+    //section ==1的时候
+    else
+    {
         return 1;
     }
     
@@ -656,18 +726,18 @@ void bubble_sory(int array[], int count) {
     if (indexPath.section==3) {
         return 60;
     }
-    //标题图片
-    if (indexPath.section==4) {
-        return 60;
-    }
     //展示的图片，一般10张，每张大概先350到400.。参数给有，，这里就任性先
-    if (indexPath.section==5) {
+    if (indexPath.section==4) {
         return 530;//之前是350，，不够高度，，我还没有传图片的高度和宽度进来计算。。要自动那个模型来设计，会保持原来图片的宽高比例的。。
     }
-    //推荐..看数组给的..先大概给个全屏幕高
+   //推荐..看数组给的..先大概给个全屏幕高
+    if (indexPath.section==5) {
+      return self.view.frame.size.height;
+    }
+    //到底
     else
     {
-        return self.view.frame.size.height;
+        return 200;
     
     }
     

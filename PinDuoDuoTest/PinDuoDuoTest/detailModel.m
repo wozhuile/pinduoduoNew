@@ -8,6 +8,8 @@
 
 #import "detailModel.h"
 #import "AFNetworking.h"
+#import "MallRecomentModle.h"
+
 @implementation detailModel
 
 
@@ -51,7 +53,7 @@
     [manager GET:mall_idString parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         
         //试试输出看看可以直接在上个数据源哪里直接接受就请求麼，。。还是先接受数据，然后滚动一段距离在刷新请求？？
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         
         MallDataModle*mallModel=[MallDataModle modelObjectWithDictionary:responseObject];
         
@@ -74,6 +76,31 @@
     
     
 
+}
+
+#pragma mark进店的推荐
+-(void)mallRecomentRequest:(NSString*)urlStr
+{
+       AFHTTPSessionManager*manager=[AFHTTPSessionManager manager];
+    
+    [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        MallRecomentModle*model=[MallRecomentModle modelObjectWithDictionary:responseObject];
+        
+        if ([_delegate respondsToSelector:@selector(successTogetMallRecometData:mallRecoment:)]) {
+            [_delegate successTogetMallRecometData:self mallRecoment:(NSMutableArray*)model.list];
+        }
+        
+        
+    
+        
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        if ([_delegate respondsToSelector:@selector(failToGetMallRecomentData:error:)]) {
+            [_delegate failToGetMallRecomentData:self error:error];
+        }
+    }];
+    
+    
 }
 
 

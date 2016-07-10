@@ -52,5 +52,7 @@ typedef void(^sendIndexPath) (NSInteger indexPath);
 #pragma makr 第三步 ，，是不是有团，
 @property(nonatomic,strong)NSMutableArray*groupArray;
 
+#pragma mark 第四步   进店的布局数据
+@property(nonatomic,strong)NSMutableArray*mallArray;
 
 @end

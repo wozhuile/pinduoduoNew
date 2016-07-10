@@ -86,6 +86,10 @@
 		04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726511D3100E000A14FCC /* groupTableViewCell.m */; };
 		04F726541D3100E000A14FCC /* groupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F726521D3100E000A14FCC /* groupTableViewCell.xib */; };
 		04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726581D3121EE00A14FCC /* MallDataModle.m */; };
+		04F7265E1D312A4D00A14FCC /* MallTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7265C1D312A4D00A14FCC /* MallTableViewCell.m */; };
+		04F7265F1D312A4D00A14FCC /* MallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7265D1D312A4D00A14FCC /* MallTableViewCell.xib */; };
+		04F726661D313D7400A14FCC /* MallList.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726631D313D7400A14FCC /* MallList.m */; };
+		04F726671D313D7400A14FCC /* MallRecomentModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726651D313D7400A14FCC /* MallRecomentModle.m */; };
 		5D573516C143A35D9C664436 /* libPods-PinDuoDuoTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +240,14 @@
 		04F726561D3121EE00A14FCC /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		04F726571D3121EE00A14FCC /* MallDataModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallDataModle.h; sourceTree = "<group>"; };
 		04F726581D3121EE00A14FCC /* MallDataModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallDataModle.m; sourceTree = "<group>"; };
+		04F7265B1D312A4D00A14FCC /* MallTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallTableViewCell.h; sourceTree = "<group>"; };
+		04F7265C1D312A4D00A14FCC /* MallTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallTableViewCell.m; sourceTree = "<group>"; };
+		04F7265D1D312A4D00A14FCC /* MallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallTableViewCell.xib; sourceTree = "<group>"; };
+		04F726611D313D7400A14FCC /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		04F726621D313D7400A14FCC /* MallList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallList.h; sourceTree = "<group>"; };
+		04F726631D313D7400A14FCC /* MallList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallList.m; sourceTree = "<group>"; };
+		04F726641D313D7400A14FCC /* MallRecomentModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallRecomentModle.h; sourceTree = "<group>"; };
+		04F726651D313D7400A14FCC /* MallRecomentModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallRecomentModle.m; sourceTree = "<group>"; };
 		3D46221AC769B6C7362D2106 /* Pods-PinDuoDuoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.debug.xcconfig"; sourceTree = "<group>"; };
 		62A8D909C68FE03580039E03 /* Pods-PinDuoDuoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinDuoDuoTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinDuoDuoTest/Pods-PinDuoDuoTest.release.xcconfig"; sourceTree = "<group>"; };
 		DBF8DB631C402A14E1121A46 /* libPods-PinDuoDuoTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinDuoDuoTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +268,7 @@
 		043125FF1D2EA32C00C2FCC7 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04F7265A1D312A3000A14FCC /* 进店 */,
 				04F7264F1D3100BF00A14FCC /* 团 */,
 				04F726491D30DD1D00A14FCC /* 详情 */,
 				04598DE01D2FE41300AABA72 /* 第五区 */,
@@ -319,6 +332,7 @@
 		04D70A7F1D2D2DEF000148D3 /* 点击数据 */ = {
 			isa = PBXGroup;
 			children = (
+				04F726601D313D7400A14FCC /* 进店的推荐 */,
 				04F726551D3121EE00A14FCC /* 进店 */,
 				04D70A801D2D2E04000148D3 /* 首页单元格点击数据 */,
 				04ED4BE71D2DFD5400966F76 /* detailModel.h */,
@@ -792,6 +806,28 @@
 			path = "进店";
 			sourceTree = "<group>";
 		};
+		04F7265A1D312A3000A14FCC /* 进店 */ = {
+			isa = PBXGroup;
+			children = (
+				04F7265B1D312A4D00A14FCC /* MallTableViewCell.h */,
+				04F7265C1D312A4D00A14FCC /* MallTableViewCell.m */,
+				04F7265D1D312A4D00A14FCC /* MallTableViewCell.xib */,
+			);
+			name = "进店";
+			sourceTree = "<group>";
+		};
+		04F726601D313D7400A14FCC /* 进店的推荐 */ = {
+			isa = PBXGroup;
+			children = (
+				04F726611D313D7400A14FCC /* DataModels.h */,
+				04F726621D313D7400A14FCC /* MallList.h */,
+				04F726631D313D7400A14FCC /* MallList.m */,
+				04F726641D313D7400A14FCC /* MallRecomentModle.h */,
+				04F726651D313D7400A14FCC /* MallRecomentModle.m */,
+			);
+			path = "进店的推荐";
+			sourceTree = "<group>";
+		};
 		70DA17A325F1BC9851930E6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,6 +905,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F7265F1D312A4D00A14FCC /* MallTableViewCell.xib in Resources */,
 				04E221A31D22211F0042B3C7 /* LaunchScreen.storyboard in Resources */,
 				04E221D01D2267C50042B3C7 /* default_mall_logo@3x.png in Resources */,
 				04E221CB1D222E990042B3C7 /* Images.xcassets in Resources */,
@@ -981,7 +1018,9 @@
 				04E377501D28BA5800467A06 /* EveryOneGroup.m in Sources */,
 				04E221D81D226E800042B3C7 /* PDDTopSctollView.m in Sources */,
 				04E377591D28BA5E00467A06 /* NewBuyMessageModle.m in Sources */,
+				04F726661D313D7400A14FCC /* MallList.m in Sources */,
 				04EBDC6C1D24170A00E7EFA7 /* rankVIew.m in Sources */,
+				04F726671D313D7400A14FCC /* MallRecomentModle.m in Sources */,
 				04E221981D22211F0042B3C7 /* ViewController.m in Sources */,
 				04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */,
 				0440422F1D275F200015D3E6 /* promotion_listTableViewCell.m in Sources */,
@@ -998,6 +1037,7 @@
 				04ED69561D23549200098325 /* PDDGoodsList.m in Sources */,
 				04E3775B1D28BA5E00467A06 /* NewGroup.m in Sources */,
 				04DF699B1D2C01DE00DF3D6A /* puchaseModle.m in Sources */,
+				04F7265E1D312A4D00A14FCC /* MallTableViewCell.m in Sources */,
 				04E259721D2A15F9006F488B /* textFieldTableViewCell.m in Sources */,
 				04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */,
 				0431260A1D2EA3C900C2FCC7 /* showTableViewCell.m in Sources */,

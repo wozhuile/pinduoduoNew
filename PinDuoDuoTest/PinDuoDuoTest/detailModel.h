@@ -20,6 +20,11 @@
 -(void)failToGetMallData:(detailModel*)mallModle error:(NSError*)error;
 
 
+#pragma mark 进店推荐请求
+-(void)successTogetMallRecometData:(detailModel*)detailModle mallRecoment:(NSMutableArray*)reconmtentArray;
+-(void)failToGetMallRecomentData:(detailModel*)detailModle error:(NSError*)error;
+
+
 @end
 
 
@@ -30,4 +35,9 @@
 
 //进店的请求
 -(void)mallData:(NSString*)mall_idString;
+
+
+#pragma mark进店的推荐
+-(void)mallRecomentRequest:(NSString*)urlStr;
+
 @end
