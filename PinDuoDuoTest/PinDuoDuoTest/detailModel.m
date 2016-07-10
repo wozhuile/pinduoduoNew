@@ -85,6 +85,10 @@
     
     [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         
+        //输出试试看
+        //NSLog(@"推荐＝＝＝＝%@",responseObject);//成功
+        
+        
         MallRecomentModle*model=[MallRecomentModle modelObjectWithDictionary:responseObject];
         
         if ([_delegate respondsToSelector:@selector(successTogetMallRecometData:mallRecoment:)]) {

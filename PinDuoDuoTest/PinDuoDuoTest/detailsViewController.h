@@ -55,4 +55,8 @@ typedef void(^sendIndexPath) (NSInteger indexPath);
 #pragma mark 第四步   进店的布局数据
 @property(nonatomic,strong)NSMutableArray*mallArray;
 
+#pragma mark 第五步  进店的推荐
+@property(nonatomic,strong)NSMutableArray*mallReconmentArray;
+
+
 @end

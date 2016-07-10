@@ -81,6 +81,10 @@
 		04ED69651D2389FB00098325 /* home_super_brandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ED69631D2389FB00098325 /* home_super_brandTableViewCell.xib */; };
 		04ED69691D238A1200098325 /* home_recommend_subjectsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED69671D238A1200098325 /* home_recommend_subjectsTableViewCell.m */; };
 		04ED696A1D238A1200098325 /* home_recommend_subjectsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ED69681D238A1200098325 /* home_recommend_subjectsTableViewCell.xib */; };
+		04EF198B1D31E080003D8E94 /* MallReconmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF19891D31E080003D8E94 /* MallReconmentTableViewCell.m */; };
+		04EF198C1D31E080003D8E94 /* MallReconmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF198A1D31E080003D8E94 /* MallReconmentTableViewCell.xib */; };
+		04EF19901D31E769003D8E94 /* reconmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF198E1D31E769003D8E94 /* reconmentCollectionViewCell.m */; };
+		04EF19911D31E769003D8E94 /* reconmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF198F1D31E769003D8E94 /* reconmentCollectionViewCell.xib */; };
 		04F7264D1D30DD4600A14FCC /* detailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */; };
 		04F7264E1D30DD4600A14FCC /* detailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */; };
 		04F726531D3100E000A14FCC /* groupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F726511D3100E000A14FCC /* groupTableViewCell.m */; };
@@ -231,6 +235,12 @@
 		04ED69661D238A1200098325 /* home_recommend_subjectsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = home_recommend_subjectsTableViewCell.h; sourceTree = "<group>"; };
 		04ED69671D238A1200098325 /* home_recommend_subjectsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = home_recommend_subjectsTableViewCell.m; sourceTree = "<group>"; };
 		04ED69681D238A1200098325 /* home_recommend_subjectsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = home_recommend_subjectsTableViewCell.xib; sourceTree = "<group>"; };
+		04EF19881D31E080003D8E94 /* MallReconmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallReconmentTableViewCell.h; sourceTree = "<group>"; };
+		04EF19891D31E080003D8E94 /* MallReconmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallReconmentTableViewCell.m; sourceTree = "<group>"; };
+		04EF198A1D31E080003D8E94 /* MallReconmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallReconmentTableViewCell.xib; sourceTree = "<group>"; };
+		04EF198D1D31E769003D8E94 /* reconmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reconmentCollectionViewCell.h; sourceTree = "<group>"; };
+		04EF198E1D31E769003D8E94 /* reconmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reconmentCollectionViewCell.m; sourceTree = "<group>"; };
+		04EF198F1D31E769003D8E94 /* reconmentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reconmentCollectionViewCell.xib; sourceTree = "<group>"; };
 		04F7264A1D30DD4600A14FCC /* detailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailTableViewCell.h; sourceTree = "<group>"; };
 		04F7264B1D30DD4600A14FCC /* detailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailTableViewCell.m; sourceTree = "<group>"; };
 		04F7264C1D30DD4600A14FCC /* detailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = detailTableViewCell.xib; sourceTree = "<group>"; };
@@ -268,6 +278,7 @@
 		043125FF1D2EA32C00C2FCC7 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				04EF19921D31E832003D8E94 /* 推荐 */,
 				04F7265A1D312A3000A14FCC /* 进店 */,
 				04F7264F1D3100BF00A14FCC /* 团 */,
 				04F726491D30DD1D00A14FCC /* 详情 */,
@@ -752,6 +763,19 @@
 			path = "第一界面确认下边的资源";
 			sourceTree = "<group>";
 		};
+		04EF19921D31E832003D8E94 /* 推荐 */ = {
+			isa = PBXGroup;
+			children = (
+				04EF19881D31E080003D8E94 /* MallReconmentTableViewCell.h */,
+				04EF19891D31E080003D8E94 /* MallReconmentTableViewCell.m */,
+				04EF198A1D31E080003D8E94 /* MallReconmentTableViewCell.xib */,
+				04EF198D1D31E769003D8E94 /* reconmentCollectionViewCell.h */,
+				04EF198E1D31E769003D8E94 /* reconmentCollectionViewCell.m */,
+				04EF198F1D31E769003D8E94 /* reconmentCollectionViewCell.xib */,
+			);
+			name = "推荐";
+			sourceTree = "<group>";
+		};
 		04F6D6571D2AAED100E04387 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +929,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EF19911D31E769003D8E94 /* reconmentCollectionViewCell.xib in Resources */,
 				04F7265F1D312A4D00A14FCC /* MallTableViewCell.xib in Resources */,
 				04E221A31D22211F0042B3C7 /* LaunchScreen.storyboard in Resources */,
 				04E221D01D2267C50042B3C7 /* default_mall_logo@3x.png in Resources */,
@@ -912,6 +937,7 @@
 				0431260B1D2EA3C900C2FCC7 /* showTableViewCell.xib in Resources */,
 				04E221A01D22211F0042B3C7 /* Assets.xcassets in Resources */,
 				04ED696A1D238A1200098325 /* home_recommend_subjectsTableViewCell.xib in Resources */,
+				04EF198C1D31E080003D8E94 /* MallReconmentTableViewCell.xib in Resources */,
 				04E2219B1D22211F0042B3C7 /* Main.storyboard in Resources */,
 				043126051D2EA3AC00C2FCC7 /* ScrollAndTopTableViewCell.xib in Resources */,
 				04E221BC1D2221BD0042B3C7 /* PDDSearchViewController.xib in Resources */,
@@ -995,6 +1021,7 @@
 				04E2596F1D2A15E3006F488B /* MiddlescrollTableViewCell.m in Sources */,
 				04DE6EE71D274C8E00FF3AC1 /* RankCountryList.m in Sources */,
 				04E3775F1D28BACD00467A06 /* HotTool.m in Sources */,
+				04EF198B1D31E080003D8E94 /* MallReconmentTableViewCell.m in Sources */,
 				04DE6EE81D274C8E00FF3AC1 /* RankGoodsList.m in Sources */,
 				04E221D31D2269A00042B3C7 /* NetWorkRequestModel.m in Sources */,
 				04E221BB1D2221BD0042B3C7 /* PDDSearchViewController.m in Sources */,
@@ -1025,6 +1052,7 @@
 				04F726591D3121EE00A14FCC /* MallDataModle.m in Sources */,
 				0440422F1D275F200015D3E6 /* promotion_listTableViewCell.m in Sources */,
 				04D70A8D1D2D2E04000148D3 /* HomeSku.m in Sources */,
+				04EF19901D31E769003D8E94 /* reconmentCollectionViewCell.m in Sources */,
 				04E221AF1D22218A0042B3C7 /* PDDHotViewController.m in Sources */,
 				04ED695B1D23549200098325 /* PDDMobileAppGroups.m in Sources */,
 				04ED69581D23549200098325 /* PDDHomeData.m in Sources */,

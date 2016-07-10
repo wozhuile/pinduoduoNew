@@ -37,13 +37,14 @@ static NSString*groupCell=@"groupCell";
 static NSString*mallCell=@"mallCell";
 
 
+
 #import "UIColor+Hex.h"
 
 #import "groupTableViewCell.h"
 
 #import "MallTableViewCell.h"
 
-
+#import "MallReconmentTableViewCell.h"
 
 
 @interface detailsViewController ()<UITableViewDataSource,UITableViewDelegate,ViewControllerDataDelegate,detailModelDelegate,SDCycleScrollViewDelegate>
@@ -100,7 +101,7 @@ static NSString*mallCell=@"mallCell";
    // _detailTextArray=[[NSMutableArray alloc]init];
     
     _groupArray=[[NSMutableArray alloc]init];
-    
+    _mallReconmentArray=[[NSMutableArray alloc]init];
     
 }
 #pragma mark跳转过来，可以直接用表，，分几个区就好。就分大区？？，，宝贝介绍，包邮哪里（颜色不同，最后就是单独一个，，如果是按钮呢？）然后支付开团，以下伙伴头一个，评论一个，在分行，，进店一个，图片一个，后边图片展示一个，。。。推荐一个，。一共至少6个，，就先4个处理吧，，第一个大区哪些也不能点击吧》。。就图片，，点击可以放大，，然后放大后，，点击了。就会回到对应那一个，，这个滑动的时候看起来是bug，，还有图片放大着，，也可以滚动，。。点击下了，，滑动到哪里就到哪里，。。醉了。。。
@@ -135,13 +136,6 @@ static NSString*mallCell=@"mallCell";
     NSLog(@"商品indexPath＝＝＝＝%ld",(long)indexPath);
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    
-//    [self sendUrl];
-//
-//}
 #pragma mark 属性传值过来，进行对应请求吧
 -(void)sendUrl
 {
@@ -199,11 +193,7 @@ static NSString*mallCell=@"mallCell";
                // [_scrollArray addObject:obj];
            // }];
             
-            
-            
-            
-            
-        }
+          }
         if (obj.type==2) {
 #pragma mark 输出，断点试试看数组都对没有
             [showArray addObject:obj.url];
@@ -211,10 +201,7 @@ static NSString*mallCell=@"mallCell";
         }
         
     }];
-    
-    
-    
-    
+ 
 #pragma mark 完美排序了，前后元素调换过来
    int  count=(int)array.count;
    
@@ -232,10 +219,6 @@ static NSString*mallCell=@"mallCell";
         [_showArray addObject:selectArray];
         
     }
-
-    
-    
-    
 #pragma mark 第二步，第一区固定死值，用字典来做？
 #warning 要不要先清空先在放？？否则每次点击就加进来，下次怎么取？？
     [_detailTextArray removeAllObjects];
@@ -263,20 +246,10 @@ static NSString*mallCell=@"mallCell";
     
     
    
-#pragma mark 进店推荐，输出试试看
+#pragma mark  第五步，进店推荐，输出试试看   。
     
-    [_detail mallRecomentRequest:[NSString stringWithFormat:@"http://apiv2.yangkeduo.com/recommendation?goods_id=%d&referrer=goods",(int)_dataIndex]];
-    
-    
-    
-    
+    [_detail mallRecomentRequest:[NSString stringWithFormat:@"http://apiv2.yangkeduo.com/recommendation?goods_id=%d&referrer=goods",(int)_dataIndex]];//运行试验成功。
     [_detailTableView reloadData];
-    
-    
-   
-    
-    
-    
 }
 #warning 一定要注意一会刷新会调用几次，，是不是会出现bug，，会不会消耗CPU等。。。
 #pragma mark   mall的数据
@@ -298,19 +271,25 @@ static NSString*mallCell=@"mallCell";
     
 #warning 注意刷新次数，考虑刷新效率和后果
     [_detailTableView reloadData];
-    
-    
-    
 }
 -(void)failToGetMallData:(detailModel *)mallModle error:(NSError *)error
 {
     NSLog(@"mallError==%@",error);
 }
+#pragma mark 推荐的数据  一会是要传值到cell里边的，，试试看吧  ,先要个数组接受，然后创建cell的时候，，在传值
+-(void)successTogetMallRecometData:(detailModel *)detailModle mallRecoment:(NSMutableArray *)reconmtentArray
+{
+    //接受值
+    _mallReconmentArray=reconmtentArray;
+ #warning 刷新。。注意会不会有问题。。应该很消耗资源的。。怎么办? 给的接口都这样，，还能怎么办？
+    [_detailTableView reloadData];
+    
+}
 
-
-
-
-
+-(void)failToGetMallRecomentData:(detailModel *)detailModle error:(NSError *)error
+{
+    NSLog(@"推荐＝＝%@",error);
+}
 
 /*void bubbleSort(int arrry[]);
 
@@ -368,11 +347,6 @@ void bubble_sory(int array[], int count) {
         }
     }
 }
-
-
-
-
-
 -(void)failToSendDatailData:(detailModel *)detailModel error:(NSError *)error
 {
     NSLog(@"详情error%@",error);
@@ -605,17 +579,39 @@ void bubble_sory(int array[], int count) {
         
         
         return cell;
+#pragma mark 展示滚动图片和显示图片的时候，图片反过来了。。需要数组排序下。。
         
         
     }
     
-#pragma mark 展示滚动图片和显示图片的时候，图片反过来了。。需要数组排序下。。
+
+    if (indexPath.section==5) {
+        
+        static NSString*cellID=@"reconmentCell";
+        MallReconmentTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        
+        if (cell==nil) {
+            cell=[[MallReconmentTableViewCell alloc]init];
+            //cell.backgroundColor=[UIColor orangeColor];
+            cell.selectionStyle=0;
+            
+        }
+        
+        
+#pragma mark 可以先输出看看传值成功没有
+        
+        cell.recommentArray=_mallReconmentArray;
+        //NSLog(@"1111====%@",_mallReconmentArray);
+       // NSLog(@"222====%@",cell.recommentArray);
+        
+
+        return cell;
+        
+        
+    }
     
-    
-    
-    
-    
-    //暂时
+      //暂时
     static NSString*cellID=@"cell";
     
     UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -732,7 +728,13 @@ void bubble_sory(int array[], int count) {
     }
    //推荐..看数组给的..先大概给个全屏幕高
     if (indexPath.section==5) {
-      return self.view.frame.size.height;
+        NSLog(@"5555===%f",self.view.frame.size.width);
+       // NSLog(@"%f",self.view.frame.size.height);
+      //return self.view.frame.size.height;
+        return 600;
+#warning  //里边需求决定的,,现在也是暂时的，，，。还需要看数组个数
+
+     
     }
     //到底
     else
